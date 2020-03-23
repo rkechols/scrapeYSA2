@@ -1,5 +1,4 @@
 import os
-import re
 import time
 from asyncio import wait_for
 from selenium import webdriver
@@ -69,20 +68,6 @@ def click_then_wait(link):
 	link.click()
 	wait_for(link_has_gone_stale(link), 10)
 	time.sleep(5)
-
-
-def remove_parenthesis_groups(name):
-	return re.sub(r"\s+\(.*\)", "", name)
-
-
-def remove_bracket_groups(name):
-	return re.sub(r"\[.*\]", "", name)
-
-
-def save_names_to_file(iterable, filename):
-	with open(filename, 'w', encoding="utf-8") as names_file:
-		for name in iterable:
-			print(name, file=names_file)
 
 
 if __name__ == "__main__":
